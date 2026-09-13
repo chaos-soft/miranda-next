@@ -71,11 +71,11 @@ function MessageList({
     main?.(d);
     if (d.messages.length) {
       for (let i = 0; i < d.messages.length; i++) {
-        if (!isMiranda && d.messages[i].id === "m") {
-          continue;
-        }
         const message = factory.create(d.messages[i]);
         processMessage_(message, i);
+        if (!isMiranda && message instanceof MessageM) {
+          continue;
+        }
         processMessage?.(message);
         setMessages((messages) => {
           const next = [...messages, message];

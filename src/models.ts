@@ -6,10 +6,6 @@ class MessageABC {
   name: string = "";
   text: string = "";
 
-  constructor(data: Partial<MessageABC>) {
-    Object.assign(this, data);
-  }
-
   addClass(class_: string) {
     this.classes.push(class_);
   }
@@ -36,7 +32,8 @@ class MessageG extends MessageABC {
   reSmile = /:\w+:/gi;
 
   constructor(data: Partial<MessageG>) {
-    super(data);
+    super();
+    Object.assign(this, data);
   }
 
   addSmile(smileId: string, smileName: string, smiles: SmileG[]): boolean {
@@ -76,7 +73,8 @@ class MessageM extends MessageABC {
   name = "Miranda";
 
   constructor(data: Partial<MessageM>) {
-    super(data);
+    super();
+    Object.assign(this, data);
   }
 }
 
@@ -86,7 +84,8 @@ class MessageT extends MessageABC {
   id = "t";
 
   constructor(data: Partial<MessageT>) {
-    super(data);
+    super();
+    Object.assign(this, data);
   }
 }
 
@@ -95,7 +94,8 @@ class MessageV extends MessageABC {
   id = "v";
 
   constructor(data: Partial<MessageV>) {
-    super(data);
+    super();
+    Object.assign(this, data);
   }
 }
 
@@ -104,7 +104,8 @@ class MessageY extends MessageABC {
   id = "y";
 
   constructor(data: Partial<MessageY>) {
-    super(data);
+    super();
+    Object.assign(this, data);
   }
 }
 

@@ -26,8 +26,8 @@ function useWebSocket(onMessage_: (v: string) => void, error?: () => void) {
     isConnecting.current = true;
     setStatus("connecting");
     try {
-      const ws = new WebSocket(url);
-      ws.onclose = () => {
+      const w = new WebSocket(url);
+      w.onclose = () => {
         if (isMounted.current) {
           isConnecting.current = false;
           onError();
@@ -35,18 +35,18 @@ function useWebSocket(onMessage_: (v: string) => void, error?: () => void) {
           timeout.current = window.setTimeout(() => connect(), 5 * 1000);
         }
       };
-      ws.onmessage = (v) => {
+      w.onmessage = (v) => {
         if (isMounted.current) {
           onMessage(v.data);
         }
       };
-      ws.onopen = () => {
+      w.onopen = () => {
         if (isMounted.current) {
           isConnecting.current = false;
           setStatus("connected");
         }
       };
-      socket.current = ws;
+      socket.current = w;
     } catch (e) {
       console.error("Failed to connect:", e);
       isConnecting.current = false;

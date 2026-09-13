@@ -106,12 +106,12 @@ function Main() {
         <span>{stats.v || "-"}</span>
         <img src="store/icons/y.ico" alt="" />
         <span>{stats.y || "-"}</span>
-        <button
+        <a
           className={"cursor-pointer" + (isScrolling ? " opacity-50" : "")}
           onClick={() => setIsScrolling(!isScrolling)}
         >
           Прокрутка
-        </button>
+        </a>
       </div>
 
       <main
